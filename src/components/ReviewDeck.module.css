@@ -1,0 +1,102 @@
+/* Updated ReviewDeck.css - Modern, Cute, Study-Oriented */
+
+.review-deck-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--bg-secondary-light);
+  color: var(--text-primary-light);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-primary-light);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+html.dark-mode .review-deck-container {
+  background-color: var(--bg-secondary-dark);
+  color: var(--text-primary-dark);
+  border-color: var(--border-primary-dark);
+}
+
+.review-deck-container h2 {
+  font-weight: 900;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--color-primary);
+  user-select: none;
+}
+
+.navigation {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.navigation button {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color-light);
+  border: none;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navigation button:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.navigation button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* No Questions Message Styling */
+.review-deck-container h2:first-child {
+  font-size: 1.5rem;
+  color: var(--text-secondary-light);
+  margin-bottom: 1rem;
+}
+
+html.dark-mode .review-deck-container h2:first-child {
+  color: var(--text-secondary-dark);
+}
+
+/* Optional: Smooth fade-in for container */
+.review-deck-container {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cute pill-style buttons for light study vibe */
+.navigation button {
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive tweak */
+@media (max-width: 500px) {
+  .navigation button {
+    width: 100%;
+  }
+  .review-deck-container {
+    padding: 1.2rem;
+  }
+  .review-deck-container h2 {
+    font-size: 1.4rem;
+  }
+}

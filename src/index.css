@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Font */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-size: 16px; /* Base font size */
+
+  /* Light Theme Colors */
+  --bg-primary-light: #f8f9fa;       /* Page background */
+  --bg-secondary-light: #ffffff;   /* Card, popover, and other surfaces */
+  --bg-tertiary-light: #f1f3f5;     /* Input fields, subtle backgrounds */
+  --bg-accent-light: #e9ecef;       /* Hover states, segmented controls */
+
+  --text-primary-light: #212529;    /* Main text */
+  --text-secondary-light: #6c757d;  /* Subtitles, placeholders, secondary info */
+  --text-on-primary-color-light: #ffffff;
+
+  --border-primary-light: #dee2e6;
+  --border-focus-light: #4dabf7;
+
+  /* Universal Colors (do not change with theme) */
+  --color-primary: #6962e8;
+  --color-primary-hover: #5b54eb;
+  --color-correct: #2f9e44;
+  --color-incorrect: #e03131;
+  --color-accent: #fcc419;
+  --color-accent-hover: #f0b429;
+  --color-disabled: #adb5bd;
+}
+
+/* 2. DARK MODE THEME - Activated when .dark-mode class is on the <html> tag
+   ========================================================================== */
+
+html.dark-mode {
+  --bg-primary-dark: #161e36;
+  --bg-secondary-dark: #222f56;
+  --bg-tertiary-dark: #373a40;
+  --bg-accent-dark: #495057;
+
+  --text-primary-dark: #f1f3f5;
+  --text-secondary-dark: #adb5bd;
+  --text-on-primary-color-dark: #ffffff;
+
+  --border-primary-dark: #682388;
+  --border-focus-dark: #f74def;
+  --border-secondary-dark: #4c4f57; /* soft dark border for pills */
+  --bg-hover-dark: #fdfdfd;
+  --bg-hover-light: #e9ecef; 
+
+}
+
+
+/* 3. BASE STYLES
+   ========================================================================== */
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-primary-light);
+  color: var(--text-primary-light);
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark-mode body {
+  background-color: var(--bg-primary-dark);
+  color: var(--text-primary-dark);
+}
+
+/* Universal container for centering content */
+.main-content-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Adds vertical space between sections */
+}
+
+/* Base button styles */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0.7em 1.2em;
+  border-radius: 0.5rem;
+  border: none;
+  transition: background-color 0.2s, transform 0.1s;
+  user-select: none;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--color-disabled);
+}
+
+/* Base input styles */
+input, select {
+  font-family: inherit;
+  padding: 0.7em 1em;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-primary-light);
+  background-color: var(--bg-secondary-light);
+  color: var(--text-primary-light);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+html.dark-mode input,
+html.dark-mode select {
+  border-color: var(--border-primary-dark);
+  background-color: var(--bg-tertiary-dark);
+  color: var(--text-primary-dark);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--border-focus-light);
+  box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.3);
+}
+
+html.dark-mode input:focus,
+html.dark-mode select:focus {
+  border-color: var(--border-focus-dark);
+  box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.2);
+}
+
+/* Utility classes */
+.loading-message, .error-message {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary-light);
+}
+
+html.dark-mode .loading-message,
+html.dark-mode .error-message {
+  color: var(--text-secondary-dark);
+}
+
+.error-message {
+  color: var(--color-incorrect);
+}

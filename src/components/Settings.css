@@ -1,0 +1,173 @@
+/* Settings.css */
+
+.settings-dropdown {
+  position: fixed;
+  top: 3.5rem;
+  right: 1rem;
+  width: 340px;
+  max-width: 90vw;
+  background-color: var(--bg-secondary-light);
+  color: var(--text-primary-light);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  z-index: 1500;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: dropdownFade 0.25s ease-out forwards;
+  border: 1px solid var(--border-secondary);
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+@keyframes dropdownFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-menu {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-close-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  font-size: 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary-light); /* better contrast for light/dark mode */
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.settings-close-button:hover {
+  transform: scale(1.2);
+  color: var(--color-primary); /* subtle hover effect */
+}
+
+
+.settings-menu h2 {
+  margin-bottom: 1rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--text-primary-light);
+  gap: 0.5rem;
+
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.setting-item span {
+  font-weight: 800;
+  font-size: 1rem;
+  user-select: none;
+  min-width: 50px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background-color: var(--color-primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.font-size-controls button {
+  background-color: var(--color-primary);
+  border: var(--border-secondary-dark);
+  color: var(--text-on-primary-color);
+  font-weight: 800;
+  font-size: 1.1rem;
+  border-radius: 900px;
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.shortcut-setting {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.shortcut-setting label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 0.9rem;
+  user-select: none;
+  font-weight: 800;
+}
+
+.shortcut-setting input {
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  transition: border-color 0.3s;
+  background-color: rgba(0,0,0,0.03);
+  width: 120px;
+  margin-left: 1rem;
+  flex-shrink: 0;
+  font-weight: 800;
+}

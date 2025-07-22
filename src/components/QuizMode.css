@@ -1,0 +1,244 @@
+/* QuizMode.css */
+
+.quiz-mode-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode .quiz-mode-container {
+  background-color: var(--bg-secondary-dark);
+  color: var(--text-primary-dark);
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.quiz-header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.timer {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-incorrect);
+}
+
+.quiz-loading {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 5rem;
+  color: var(--text-primary);
+}
+
+.question-progress {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.quiz-question-card {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.quiz-question-text {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.quiz-answers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.quiz-answer-button {
+  background-color: var(--bg-primary);
+  border: 1.5px solid var(--border-primary);
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.quiz-answer-button:hover {
+  border-color: var(--color-primary);
+}
+
+.quiz-answer-button.selected {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color);
+  border-color: var(--color-primary);
+}
+
+.quiz-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.quiz-navigation button {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.quiz-navigation button:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.submit-quiz-button {
+  background-color: var(--color-correct) !important;
+}
+
+.submit-quiz-button:hover:not(:disabled) {
+  background-color: #218838 !important; /* Keep a specific hover for this button if needed */
+}
+
+.quiz-results {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.quiz-results h3 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.quiz-results p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-results button {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1.5rem;
+}
+
+.quiz-results button:hover {
+  background-color: var(--color-primary-hover);
+}
+.dark-mode .quiz-header h2 {
+  color: var(--color-primary);
+}
+
+.dark-mode .timer {
+  color: var(--color-incorrect);
+}
+
+/* Progress text softer but still readable */
+.dark-mode .question-progress {
+  color: var(--text-secondary-dark);
+}
+
+/* Question Card: gentle contrast */
+.dark-mode .quiz-question-card {
+  background-color: var(--bg-tertiary-dark);
+  border-radius: 12px;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.02);
+}
+
+/* Question Text */
+.dark-mode .quiz-question-text {
+  color: var(--text-primary-dark);
+}
+
+/* Answer Buttons: subtle background with highlight on hover */
+.dark-mode .quiz-answer-button {
+  background-color: var(--bg-secondary-dark);
+  border: 1.5px solid var(--border-secondary-dark);
+  color: var(--text-primary-dark);
+}
+
+.dark-mode .quiz-answer-button:hover {
+  border-color: var(--color-primary);
+}
+
+/* Selected Answer: keep it bold and clear */
+.dark-mode .quiz-answer-button.selected {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color-dark);
+  border-color: var(--color-primary);
+}
+
+/* Navigation Buttons */
+.dark-mode .quiz-navigation button {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color-dark);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .quiz-navigation button:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+/* Submit Button in Dark */
+.dark-mode .submit-quiz-button {
+  background-color: var(--color-correct) !important;
+  color: var(--text-on-primary-color-dark);
+}
+
+.dark-mode .submit-quiz-button:hover:not(:disabled) {
+  background-color: #2b8a3e !important;
+}
+
+/* Results Section */
+.dark-mode .quiz-results h3 {
+  color: var(--color-primary);
+}
+
+.dark-mode .quiz-results p {
+  color: var(--text-primary-dark);
+}
+
+.dark-mode .quiz-results button {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color-dark);
+}
+
+.dark-mode .quiz-results button:hover {
+  background-color: var(--color-primary-hover);
+}
