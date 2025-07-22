@@ -1,8 +1,8 @@
 {
-  "name": "residentura-app",
+  "name": "residency",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://irinkobela.github.io/Residentura/",
+  "homepage": "https://irinkobela.github.io/Residency/",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
