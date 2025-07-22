@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/Residency/static/css/main.dc773fea.css",
+    "main.js": "/Residency/static/js/main.5c0ef467.js",
+    "static/css/652.86f5aa57.chunk.css": "/Residency/static/css/652.86f5aa57.chunk.css",
+    "static/js/652.a82f6167.chunk.js": "/Residency/static/js/652.a82f6167.chunk.js",
+    "static/css/966.6e741eee.chunk.css": "/Residency/static/css/966.6e741eee.chunk.css",
+    "static/js/966.864f2619.chunk.js": "/Residency/static/js/966.864f2619.chunk.js",
+    "static/css/542.c64c2941.chunk.css": "/Residency/static/css/542.c64c2941.chunk.css",
+    "static/js/542.6f8eb3ec.chunk.js": "/Residency/static/js/542.6f8eb3ec.chunk.js",
+    "static/css/352.e28944e6.chunk.css": "/Residency/static/css/352.e28944e6.chunk.css",
+    "static/js/352.6f8249d5.chunk.js": "/Residency/static/js/352.6f8249d5.chunk.js",
+    "static/css/944.86f5aa57.chunk.css": "/Residency/static/css/944.86f5aa57.chunk.css",
+    "static/js/944.a27c624c.chunk.js": "/Residency/static/js/944.a27c624c.chunk.js",
+    "static/js/488.8659684f.chunk.js": "/Residency/static/js/488.8659684f.chunk.js",
+    "service-worker.js": "/Residency/service-worker.js",
+    "index.html": "/Residency/index.html",
+    "main.dc773fea.css.map": "/Residency/static/css/main.dc773fea.css.map",
+    "main.5c0ef467.js.map": "/Residency/static/js/main.5c0ef467.js.map",
+    "652.86f5aa57.chunk.css.map": "/Residency/static/css/652.86f5aa57.chunk.css.map",
+    "652.a82f6167.chunk.js.map": "/Residency/static/js/652.a82f6167.chunk.js.map",
+    "966.6e741eee.chunk.css.map": "/Residency/static/css/966.6e741eee.chunk.css.map",
+    "966.864f2619.chunk.js.map": "/Residency/static/js/966.864f2619.chunk.js.map",
+    "542.c64c2941.chunk.css.map": "/Residency/static/css/542.c64c2941.chunk.css.map",
+    "542.6f8eb3ec.chunk.js.map": "/Residency/static/js/542.6f8eb3ec.chunk.js.map",
+    "352.e28944e6.chunk.css.map": "/Residency/static/css/352.e28944e6.chunk.css.map",
+    "352.6f8249d5.chunk.js.map": "/Residency/static/js/352.6f8249d5.chunk.js.map",
+    "944.86f5aa57.chunk.css.map": "/Residency/static/css/944.86f5aa57.chunk.css.map",
+    "944.a27c624c.chunk.js.map": "/Residency/static/js/944.a27c624c.chunk.js.map",
+    "488.8659684f.chunk.js.map": "/Residency/static/js/488.8659684f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc773fea.css",
+    "static/js/main.5c0ef467.js"
+  ]
+}
