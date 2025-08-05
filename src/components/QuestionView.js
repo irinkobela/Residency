@@ -13,18 +13,17 @@ const QuestionView = ({
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(isForcedAnswered || false);
   const explanationRef = useRef(null);
-  const questionRef = useRef(null); // <--- NEW: Ref for the question card itself
+  const questionRef = useRef(null); 
 
   useEffect(() => {
     // Reset internal state when question changes OR when isForcedAnswered changes
     setSelectedAnswer(null);
     setIsAnswered(isForcedAnswered || false);
 
-    // <--- NEW: Scroll to the top of the question when a new question is loaded
     if (questionRef.current) {
       questionRef.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'start' // Scrolls the top of the element to the top of the viewport
+        block: 'start' 
       });
     }
   }, [question, isForcedAnswered]); // Added question to dependencies to trigger on question change
@@ -85,14 +84,18 @@ const QuestionView = ({
   return (
     // <--- NEW: Attach the questionRef to the main question-card div
     <div className="question-card" ref={questionRef}>
-      <h2 className="question-text">❓ {question.question}</h2>
-      <div className="answers-container">
+      <h2 className="question-text" id={`question-${question.id}`}>❓ {question.question}</h2>
+      <div className="answers-container" role="radiogroup" aria-labelledby={`question-${question.id}`}>
         {question.answers.map((answer, index) => (
           <button
             key={index}
             className={getButtonClassName(answer)}
             onClick={() => handleAnswerClick(answer)}
             disabled={isAnswered} // Disable if already answered (internally or forced)
+            role="radio"
+            aria-checked={selectedAnswer === answer}
+            aria-describedby={isAnswered && answer.isCorrect ? `explanation-${question.id}` : undefined}
+            tabIndex={0}
           >
             {answer.text}
           </button>

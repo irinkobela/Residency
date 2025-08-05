@@ -21,7 +21,6 @@ html, body {
     justify-content: center;
     align-items: center;
     position: relative;
-    /* Add a subtle shadow to lift the header */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 10;
 }
@@ -146,26 +145,51 @@ body.dark-mode .navigation-controls {
     background-color: var(--color-primary-hover);
 }
 
-.settings-button,
-.settings-button:hover,
-.settings-button:focus,
-.settings-button:active {
+.settings-button {
     position: absolute;
     right: 2rem;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) !important;
     font-size: 1.5rem;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    transition: none;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: none !important;
     color: var(--text-on-primary-color-light);
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-/* --- NEW LAYOUT STYLES --- */
+.settings-button:hover,
+.settings-button:focus,
+.settings-button:active {
+    position: absolute !important;
+    right: 2rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 1.5rem !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: none !important;
+    color: var(--text-on-primary-color-light) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
 
 .main-layout-container {
     display: flex;
@@ -218,22 +242,22 @@ body.dark-mode .welcome-message {
 /* --- Media Query for Desktop Screens (992px and wider) --- */
 @media (min-width: 992px) {
     .main-layout-container {
-        flex-direction: row; /* Switch to a two-column layout */
+        flex-direction: row; 
         align-items: flex-start;
     }
 
     .sidebar {
-        width: 350px;     /* Give the sidebar a fixed width */
-        flex-shrink: 0;   /* Prevent the sidebar from shrinking */
-        position: sticky; /* Makes the sidebar stay in view on scroll */
-        top: 20px;        /* Distance from top when sticky */
+        width: 350px;     
+        flex-shrink: 0;   
+        position: sticky; 
+        top: 20px;        
     }
 
     .content-area {
-        flex-grow: 1; /* Allow the main content to take up the rest of the space */
+        flex-grow: 1;
     }
 }
-/* TagFilter.css */
+
 
 
 .tag-filter-container {
@@ -330,10 +354,9 @@ body.dark-mode .tag-pill.active {
   box-shadow: 0 0 0 2px rgba(105, 98, 232, 0.4); /* subtle glow matching primary */
 }
 
-/* Add these styles to your App.css file */
 
 .navigation-controls {
-  /* This ensures the new jumper and the buttons are spaced out */
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -345,9 +368,9 @@ body.dark-mode .tag-pill.active {
   align-items: center;
   gap: 8px;
   font-weight: 800;
-  color: #3730a3; /* Indigo-800 */
-  background-color: #eef2ff; /* Indigo-50 */
-  border: 1px solid #c7d2fe; /* Indigo-200 */
+  color: #3730a3; 
+  background-color: #eef2ff; 
+  border: 1px solid #c7d2fe; 
   padding: 8px 12px;
   border-radius: 8px;
 }
@@ -365,15 +388,14 @@ body.dark-mode .tag-pill.active {
 }
 
 .question-jump-input:focus {
-  outline: 2px solid #6366f1; /* Indigo-500 */
+  outline: 2px solid #6366f1; 
   background-color: #ffffff;
 }
 .dark-mode .question-jump-input {
   color: #ffffff;
   background-color: var(--bg-secondary-dark);
-  border: 1px solid #334155; /* Gray-700 */
+  border: 1px solid #334155;
 }
-/* Hides the arrows on number inputs for a cleaner look */
 .question-jump-input::-webkit-inner-spin-button,
 .question-jump-input::-webkit-outer-spin-button {
   -webkit-appearance: none;

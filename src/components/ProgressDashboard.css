@@ -1,0 +1,137 @@
+/* ProgressDashboard.css */
+
+.progress-dashboard {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-secondary-light);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .progress-dashboard {
+  background-color: var(--bg-secondary-dark);
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 120px;
+  padding: 1rem;
+  background: var(--bg-tertiary-light);
+  border-radius: 8px;
+  text-align: center;
+}
+
+body.dark-mode .stat-card {
+  background: var(--bg-tertiary-dark);
+}
+
+.stat-number {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-secondary-light);
+}
+
+body.dark-mode .stat-label {
+  color: var(--text-secondary-dark);
+}
+
+.stat-detail {
+  font-size: 0.875rem;
+  color: var(--text-secondary-light);
+}
+
+body.dark-mode .stat-detail {
+  color: var(--text-secondary-dark);
+}
+
+.tag-performance {
+  margin-top: 2rem;
+}
+
+.tag-performance h3 {
+  color: var(--text-primary-light);
+}
+
+body.dark-mode .tag-performance h3 {
+  color: var(--text-primary-dark);
+}
+
+.tag-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tag-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: var(--bg-tertiary-light);
+  border-radius: 6px;
+}
+
+body.dark-mode .tag-stat {
+  background: var(--bg-tertiary-dark);
+}
+
+.tag-name {
+  font-weight: bold;
+  color: var(--text-primary-light);
+}
+
+body.dark-mode .tag-name {
+  color: var(--text-primary-dark);
+}
+
+.tag-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+.progress-bar {
+  background: var(--bg-accent-light);
+  width: 150px;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+body.dark-mode .progress-bar {
+  background: var(--bg-accent-dark);
+}
+
+.progress-fill {
+  background: var(--color-primary);
+  height: 100%;
+  width: 0;  /* This will be dynamic */
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.3s;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary-light);
+  min-width: 60px;
+}
+
+body.dark-mode .progress-text {
+  color: var(--text-secondary-dark);
+}

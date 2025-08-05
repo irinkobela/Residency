@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useContext, Suspense, lazy, useCallback } from 'react';
 import { QuestionContext } from './contexts/QuestionContext';
 import { useShortcuts } from './contexts/ShortcutContext';
-import useLocalStorage from './hooks/useLocalStorage';
 import { useNavigate } from 'react-router-dom';
+import useLocalStorage from './hooks/useLocalStorage';
 import './App.css';
 
 // Lazy load components
@@ -12,6 +12,7 @@ const SettingsPopoverComponent = lazy(() => import('./components/SettingsPopover
 const ReviewDeck = lazy(() => import('./components/ReviewDeck'));
 const TagFilter = lazy(() => import('./components/TagFilter'));
 const EasyStudyModeView = lazy(() => import('./components/EasyStudyModeView'));
+const ProgressDashboard = lazy(() => import('./components/ProgressDashboard'));
 
 const StudyMode = () => {
     const navigate = useNavigate();
@@ -21,13 +22,15 @@ const StudyMode = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedTags, setSelectedTags] = useLocalStorage('selectedTags', []);
     const [incorrectlyAnsweredQuestions, setIncorrectlyAnsweredQuestions] = useLocalStorage('incorrectlyAnsweredQuestions', []);
+    const [answeredQuestions, setAnsweredQuestions] = useLocalStorage('answeredQuestions', []);
+    const [correctAnswers, setCorrectAnswers] = useLocalStorage('correctAnswers', []);
     const [showExplanation, setShowExplanation] = useState(false); // This state is for modes where explanation is toggled
 
     const MODES = {
-        QUIZ: 'quiz',
         STUDY: 'study', // Original study mode (answers first, then explanation toggle)
         EASY_STUDY: 'easy_study', // The new mode: always show correct answer and explanation immediately
-        REVIEW: 'review'
+        REVIEW: 'review',
+        PROGRESS: 'progress' // Progress dashboard mode
     };
     const [currentMode, setCurrentMode] = useLocalStorage('currentAppMode', MODES.STUDY);
 
@@ -56,14 +59,28 @@ const StudyMode = () => {
         setJumpToValue((currentQuestionIndex + 1).toString());
     }, [currentQuestionIndex]);
 
+    const [flashEnabled, setFlashEnabled] = useState(false);
+
     const handleAnswerResult = useCallback((questionId, isCorrect) => {
-        if (!isCorrect) {
+        // Track that this question has been answered
+        setAnsweredQuestions(prev => (prev.includes(questionId) ? prev : [...prev, questionId]));
+        
+        // Track correct answers
+        if (isCorrect) {
+            setCorrectAnswers(prev => (prev.includes(questionId) ? prev : [...prev, questionId]));
+        } else {
             setIncorrectlyAnsweredQuestions(prev => (prev.includes(questionId) ? prev : [...prev, questionId]));
         }
-        if (currentMode === MODES.QUIZ) {
-            setShowExplanation(true);
+        
+        // Auto-advance to next question if flash is enabled and answer is correct
+        if (flashEnabled && isCorrect) {
+            setTimeout(() => {
+                if (currentQuestionIndex < filteredQuestions.length - 1) {
+                    setCurrentQuestionIndex(prev => prev + 1);
+                }
+            }, 1000); // 1 second delay to show the correct answer feedback before moving
         }
-    }, [setIncorrectlyAnsweredQuestions, currentMode, MODES.QUIZ]);
+    }, [setAnsweredQuestions, setCorrectAnswers, setIncorrectlyAnsweredQuestions, flashEnabled, currentMode, MODES.QUIZ, currentQuestionIndex, filteredQuestions.length, setCurrentQuestionIndex]);
 
     const handleNext = useCallback(() => {
         if (currentMode === MODES.QUIZ || currentMode === MODES.STUDY) {
@@ -141,17 +158,6 @@ const StudyMode = () => {
         }
 
         switch (currentMode) {
-            case MODES.QUIZ:
-                return (
-                    <QuestionView
-                        question={currentQuestion}
-                        onAnswerResult={handleAnswerResult}
-                        showExplanation={showExplanation}
-                        toggleExplanation={toggleExplanation}
-                        alwaysShowCorrectAnswer={false}
-                        isForcedAnswered={false} // <--- Pass false for Quiz Mode
-                    />
-                );
             case MODES.EASY_STUDY:
                 return (
                     <EasyStudyModeView
@@ -207,12 +213,17 @@ const StudyMode = () => {
 
                 <main className="content-area">
                     <div className="mode-toggle">
+{/* Flash Enable Toggle */}
+                        <button
+                            onClick={() => setFlashEnabled(prev => !prev)}
+                            className={flashEnabled ? 'active' : ''}
+                        >
+                            ⚡ Flash {flashEnabled ? 'On' : 'Off'}
+                        </button>
+
                         {/* Quiz Mode Button */}
                         <button
-                            onClick={() => {
-                                setCurrentMode(MODES.QUIZ);
-                            }}
-                            className={currentMode === MODES.QUIZ ? 'active' : ''}
+                            onClick={() => navigate('/quiz')}
                         >🎯 ქვიზ რეჟიმი</button>
                         
                         {/* Original Study Mode Button */}
@@ -235,6 +246,7 @@ const StudyMode = () => {
                             className={currentMode === MODES.EASY_STUDY ? 'active' : ''}
                         >🌟 მარტივი სწავლის რეჟიმი</button>
                         
+                        
                         {/* Review Mode Button */}
                         <button
                             onClick={() => {
@@ -243,6 +255,14 @@ const StudyMode = () => {
                             disabled={reviewQuestions.length === 0}
                             className={currentMode === MODES.REVIEW ? 'active' : ''}
                         >🔁 გადახედვა ({reviewQuestions.length})</button>
+                        
+                        {/* Progress Dashboard Button */}
+                        <button
+                            onClick={() => {
+                                setCurrentMode(MODES.PROGRESS);
+                            }}
+                            className={currentMode === MODES.PROGRESS ? 'active' : ''}
+                        >📊 პროგრესი</button>
                     </div>
                     
                     <Suspense fallback={<div className="loading-message">📦 იტვირთება...</div>}>
@@ -258,6 +278,11 @@ const StudyMode = () => {
                                     showExplanation={showExplanation}
                                     toggleExplanation={toggleExplanation}
                                     clearIncorrectlyAnsweredQuestions={clearIncorrectlyAnsweredQuestions}
+                                />
+                            ) : currentMode === MODES.PROGRESS ? (
+                                <ProgressDashboard
+                                    questions={questions}
+                                    incorrectlyAnsweredQuestions={incorrectlyAnsweredQuestions}
                                 />
                             ) : (
                                 <>
